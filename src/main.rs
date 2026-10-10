@@ -2,28 +2,19 @@ use raylib::prelude::*;
 
 mod line;
 
-use line::{dibujar_punto, line};
+use line::triangle;
 
 const ANCHO_VENTANA: i32 = 800;
 const ALTO_VENTANA: i32 = 600;
 
-fn imprimir_vertice(v: Vector3) {
-    println!("x = {}", v.x);
-    println!("y = {}", v.y);
-    println!("z = {}", v.z);
-}
-
 fn main() {
-    let punto = Vector2::new(100.0, 200.0);
-    let inicio = Vector2::new(150.0, 150.0);
-    let fin = Vector2::new(650.0, 450.0);
-    let vertice = Vector3::new(3.0, 5.0, -2.0);
-
-    imprimir_vertice(vertice);
+    let a = Vector2::new(320.0, 100.0);
+    let b = Vector2::new(150.0, 350.0);
+    let c = Vector2::new(500.0, 350.0);
 
     let (mut raylib, hilo) = raylib::init()
         .size(ANCHO_VENTANA, ALTO_VENTANA)
-        .title("Vértices y vectores")
+        .title("Laboratorio 4")
         .build();
 
     raylib.set_target_fps(60);
@@ -31,7 +22,6 @@ fn main() {
     while !raylib.window_should_close() {
         let mut dibujo = raylib.begin_drawing(&hilo);
         dibujo.clear_background(Color::RAYWHITE);
-        dibujar_punto(&mut dibujo, punto, Color::BLACK);
-        line(&mut dibujo, inicio, fin, Color::BLACK);
+        triangle(&mut dibujo, a, b, c, Color::BLACK);
     }
 }

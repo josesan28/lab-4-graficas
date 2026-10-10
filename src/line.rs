@@ -36,3 +36,9 @@ pub fn line(dibujo: &mut RaylibDrawHandle, start: Vector2, end: Vector2, color: 
         }
     }
 }
+
+pub fn triangle(dibujo: &mut RaylibDrawHandle, a: Vector2, b: Vector2, c: Vector2, color: Color) {
+    line(dibujo, a, b, color);
+    line(dibujo, b, c, color);
+    line(dibujo, c, a, color);
+}
